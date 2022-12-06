@@ -19,3 +19,6 @@ etc/keyauth.env
 etc/unit_test.env
 etc/ssl
 keyauth
+
+.vscode
+.history
