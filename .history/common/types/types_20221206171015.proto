@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package kalandra.keyauth.types;
+option go_package="github.com/kalandra/keyauth/common/types";
+
+enum U

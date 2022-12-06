@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package kalandra.keyauth.types;
+option go_package="github.com/kalandramo/keyauth/common/types";
+
+enum UpdateMode {
+    PUT = 0;
+    PATCH = 1;
+}

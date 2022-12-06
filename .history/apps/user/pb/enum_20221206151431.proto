@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package kalandra.keyauth.user;
+option go_package="github.com/kalandra/keyauth/apps/user";
+
+enum CreateType{
+    // UserRegistry (user_registry) 用户自己注册的用户
+    USER_REGISTRY = 0;
+    // DOMAIN_CREATED (domain_admin) 域管理员创建的用户
+    DOMAIN_CREATED = 1;
+    // LDAPSync (ldap_sync) LDAP同步的用户
+    LADP_SYNC = 2;
+}

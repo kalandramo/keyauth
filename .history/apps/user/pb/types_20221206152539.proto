@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package kalandra.keyauth.user;
+option go_package="github.com/kalandra/keyauth/apps/user";
+
+// 为了防止越权, 用户可以调整的权限范围只有10已下的权限
+enum UserType{
+    // 子账号, 无用户中心后台管理权限
+    SUB = 0;
+    // 组织管理人, 管理该域的组织结构
+    ORG_ADMIN = 1;
+}

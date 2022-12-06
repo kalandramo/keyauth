@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package kalandra.keyauth.user;
+option go_package = "github.com/kalandra/keyauth/apps/user";
+
+import "github.com/infraboard/mcube/pb/page/page.proto";
+import "apps/user/pb/enum.proto";
+import "apps/user/pb/types.proto";
+
+// Profile todo
+message Profile {
+    // 用户真实姓名
+    // @gotags: bson:"real_name" json:"real_name" validate:"lte=10"
+    string real_name = 1;
+    // 用户昵称, 用于在界面进行展示
+    // @gotags:
+}

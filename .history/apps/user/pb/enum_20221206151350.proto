@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package kalandra.keyauth.user;
+option go_package="github.com/kalandra/keyauth/apps/user";
+
+enum CreateType{
+    // UserRegistry (user_registry) 用户自己注册的用户
+    USER_REGISTRY = 0;
+}

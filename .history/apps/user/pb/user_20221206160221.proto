@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package kalandra.keyauth.user;
+option go_package = "github.com/kalandra/keyauth/apps/user";
+
+
+
