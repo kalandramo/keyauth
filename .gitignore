@@ -20,5 +20,5 @@ etc/unit_test.env
 etc/ssl
 keyauth
 
-.vscode
-.history
+.vscode/
+.history/
