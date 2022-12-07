@@ -1,0 +1,17 @@
+{
+    "domain": "ck",
+    "create_type": "0",
+    "user_type": "15",
+    "department_id": "9",
+    "account": "admin",
+    "expires_days": "180",
+    "description": "超级管理员",
+    "profile": {
+        "real_name": "超级管理员",
+        "nick_name": "admin",
+        "address": "珠江新城",
+        "city": "广州",
+        "province": "广东"
+    },
+    "password": "12345678"
+}

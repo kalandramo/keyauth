@@ -6,16 +6,7 @@ import (
 	"github.com/kalandramo/keyauth/apps/user"
 )
 
-func (s *service) QueryAccount(ctx context.Context, req *user.QueryAccountRequest) (*user.Set, error) {
-	// 校验请求
-	r, err := NewQueryAccountRequest(req)
-	if err != nil {
-		return nil, err
-	}
-
-	return s.queryAccount(ctx, r)
-}
-
+// CreateAccount 创建用户
 func (s *service) CreateAccount(ctx context.Context, req *user.CreateAccountRequest) (*user.User, error) {
 	u, err := user.New(req)
 	if err != nil {
@@ -34,4 +25,15 @@ func (s *service) CreateAccount(ctx context.Context, req *user.CreateAccountRequ
 	u.HashedPassword = nil
 
 	return u, nil
+}
+
+// QueryAccount 查询用户
+func (s *service) QueryAccount(ctx context.Context, req *user.QueryAccountRequest) (*user.Set, error) {
+	// 校验请求
+	r, err := NewQueryAccountRequest(req)
+	if err != nil {
+		return nil, err
+	}
+
+	return s.queryAccount(ctx, r)
 }

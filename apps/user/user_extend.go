@@ -8,6 +8,16 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+const (
+	// DefaultExpiresDays 默认多少天无登录系统就冻结该用户
+	DefaultExpiresDays = 90
+)
+
+// NewProfile todo
+func NewProfile() *Profile {
+	return &Profile{}
+}
+
 // NewUserSet 实例
 func NewUserSet() *Set {
 	return &Set{
@@ -19,7 +29,7 @@ func (s *Set) Add(user *User) {
 	s.Items = append(s.Items, user)
 }
 
-// New 实例
+// New 一个User实例
 func New(req *CreateAccountRequest) (*User, error) {
 	if err := req.Validate(); err != nil {
 		return nil, exception.NewBadRequest(err.Error())
