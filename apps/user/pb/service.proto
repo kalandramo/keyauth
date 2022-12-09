@@ -16,7 +16,7 @@ service Service {
 	rpc CreateAccount(CreateAccountRequest) returns(User);
 	// 禁用账号
 	rpc BlockAccount(BlockAccountRequest) returns(User);
-	// 禁用账号
+	// 解锁账号
 	rpc UnBlockAccount(UnBlockAccountRequest) returns(User);
 	// DeleteAccount 删除用户
 	rpc DeleteAccount(DeleteAccountRequest) returns(User);
