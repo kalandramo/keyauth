@@ -86,6 +86,11 @@ func NewHashedPassword(password string) (*Password, error) {
 	}, nil
 }
 
+// SetExpired 密码过期
+func (p *Password) SetExpired() {
+	p.IsExpired = true
+}
+
 // SetNeedReset 需要被重置
 func (p *Password) SetNeedReset(format string, a ...interface{}) {
 	p.NeedReset = true

@@ -4,10 +4,12 @@ import (
 	"context"
 
 	"github.com/infraboard/keyauth/apps/domain"
+	"github.com/infraboard/mcube/app"
 	"github.com/kalandramo/keyauth/conf"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/x/bsonx"
+	"google.golang.org/grpc"
 )
 
 var srv = &service{}
@@ -48,4 +50,16 @@ func (s *service) Config() error {
 	s.col = dc
 
 	return nil
+}
+
+func (s *service) Name() string {
+	return domain.AppName
+}
+
+func (s *service) Registry(server *grpc.Server) {
+	domain.RegisterServiceServer(server, srv)
+}
+
+func init() {
+	app.RegistryGrpcApp(srv)
 }
