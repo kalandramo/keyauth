@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/http/request"
 )
 
@@ -84,4 +85,66 @@ func (req *DescribeAccountRequest) Validate() error {
 		return fmt.Errorf("account is required")
 	}
 	return nil
+}
+
+// NewGeneratePasswordRequest todo
+func NewGeneratePasswordRequest() *GeneratePasswordRequest {
+	return &GeneratePasswordRequest{}
+}
+
+// NewGeneratePasswordResponse todo
+func NewGeneratePasswordResponse(password string) *GeneratePasswordResponse {
+	return &GeneratePasswordResponse{
+		Password: password,
+	}
+}
+
+// NewBlockAccountRequest todo
+func NewBlockAccountRequest(account, reason string) *BlockAccountRequest {
+	return &BlockAccountRequest{
+		Account: account,
+		Reason:  reason,
+	}
+}
+
+func (req *BlockAccountRequest) Validate() error {
+	if req.Account == "" {
+		return exception.NewBadRequest("block account required!")
+	}
+	return nil
+}
+
+func (req *UnBlockAccountRequest) Validate() error {
+	if req.Account == "" {
+		return exception.NewBadRequest("unblock account required!")
+	}
+	return nil
+}
+
+// NewUpdatePasswordRequest
+func NewUpdatePasswordRequest() *UpdatePasswordRequest {
+	return &UpdatePasswordRequest{}
+}
+
+// Validate
+func (req *UpdatePasswordRequest) Validate() error {
+	if req.Account == "" {
+		return fmt.Errorf("account required")
+	}
+	if req.OldPass == req.NewPass {
+		return fmt.Errorf("old_pass equal new_pass")
+	}
+	if req.OldPass == "" || req.NewPass == "" {
+		return fmt.Errorf("old_pass and new_pass required")
+	}
+	if req.Account == req.NewPass {
+		return fmt.Errorf("password must not equal account")
+	}
+
+	return nil
+}
+
+// 实现checkowner方法
+func (req *UpdatePasswordRequest) CheckOwner(account string) bool {
+	return req.Account == account
 }
