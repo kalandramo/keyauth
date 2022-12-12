@@ -30,7 +30,7 @@ type ServiceClient interface {
 	CreateAccount(ctx context.Context, in *CreateAccountRequest, opts ...grpc.CallOption) (*User, error)
 	// 禁用账号
 	BlockAccount(ctx context.Context, in *BlockAccountRequest, opts ...grpc.CallOption) (*User, error)
-	// 禁用账号
+	// 解锁账号
 	UnBlockAccount(ctx context.Context, in *UnBlockAccountRequest, opts ...grpc.CallOption) (*User, error)
 	// DeleteAccount 删除用户
 	DeleteAccount(ctx context.Context, in *DeleteAccountRequest, opts ...grpc.CallOption) (*User, error)
@@ -143,7 +143,7 @@ type ServiceServer interface {
 	CreateAccount(context.Context, *CreateAccountRequest) (*User, error)
 	// 禁用账号
 	BlockAccount(context.Context, *BlockAccountRequest) (*User, error)
-	// 禁用账号
+	// 解锁账号
 	UnBlockAccount(context.Context, *UnBlockAccountRequest) (*User, error)
 	// DeleteAccount 删除用户
 	DeleteAccount(context.Context, *DeleteAccountRequest) (*User, error)

@@ -40,8 +40,8 @@ message Status {
     // @gotags: bson:"locked_time" json:"locked_time,omitempty"
     int64 locked_time = 2;
     // 冻结原因
-    // @gotags: bson:"locked_reson" json:"locked_reson,omitempty"
-    string locked_reson = 3;
+    // @gotags: bson:"locked_reason" json:"locked_reason,omitempty"
+    string locked_reason = 3;
     // 解冻时间
     // @gotags: bson:"unlock_time" json:"unlock_time,omitempty"
     int64 unlock_time = 4;
