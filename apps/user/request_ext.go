@@ -7,6 +7,7 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/infraboard/mcube/exception"
 	"github.com/infraboard/mcube/http/request"
+	"github.com/kalandramo/keyauth/common/types"
 )
 
 var validate = validator.New()
@@ -85,6 +86,31 @@ func (req *DescribeAccountRequest) Validate() error {
 		return fmt.Errorf("account is required")
 	}
 	return nil
+}
+
+// NewPutAccountRequest todo
+func NewPutAccountRequest() *UpdateAccountRequest {
+	return &UpdateAccountRequest{
+		UpdateMode: types.UpdateMode_PUT,
+		Profile:    NewProfile(),
+	}
+}
+
+// NewPatchAccountRequest todo
+func NewPatchAccountRequest() *UpdateAccountRequest {
+	return &UpdateAccountRequest{
+		UpdateMode: types.UpdateMode_PATCH,
+		Profile:    NewProfile(),
+	}
+}
+
+func (req *UpdateAccountRequest) CheckOwner(account string) bool {
+	return req.Account == account
+}
+
+// Validate 更新请求校验
+func (req *UpdateAccountRequest) Validate() error {
+	return validate.Struct(req)
 }
 
 // NewGeneratePasswordRequest todo
