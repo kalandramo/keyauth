@@ -3,8 +3,8 @@ package impl
 import (
 	"context"
 
-	"github.com/infraboard/keyauth/apps/domain"
 	"github.com/infraboard/mcube/app"
+	"github.com/kalandramo/keyauth/apps/domain"
 	"github.com/kalandramo/keyauth/conf"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"

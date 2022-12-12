@@ -37,6 +37,16 @@ func (s *SecuritySetting) Patch(data *SecuritySetting) {
 	json.Unmarshal(b, s)
 }
 
+// Put todo
+func (s *SecuritySetting) Put(data *SecuritySetting) {
+	b, err := json.Marshal(data)
+	if err != nil {
+		return
+	}
+
+	json.Unmarshal(b, s)
+}
+
 // NewDefaulPasswordSecurity todo
 func NewDefaultPasswordSecurity() *PasswordSecurity {
 	return &PasswordSecurity{

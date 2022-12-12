@@ -97,3 +97,9 @@ func (req *DomainProfile) Patch(data *DomainProfile) {
 	patchData, _ := json.Marshal(data)
 	json.Unmarshal(patchData, req)
 }
+
+// Put todo
+func (req *DomainProfile) Put(data *DomainProfile) {
+	patchData, _ := json.Marshal(data)
+	json.Unmarshal(patchData, req)
+}
