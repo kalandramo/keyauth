@@ -10,6 +10,7 @@ import (
 	"github.com/kalandramo/keyauth/common/password"
 )
 
+// NewDefaultSecuritySetting todo
 func NewDefaultSecuritySetting() *SecuritySetting {
 	return &SecuritySetting{
 		PasswordSecurity: NewDefaultPasswordSecurity(),
@@ -17,6 +18,26 @@ func NewDefaultSecuritySetting() *SecuritySetting {
 	}
 }
 
+// GetPasswordRepeatLimit todo
+func (s *SecuritySetting) GetPasswordRepeatLimit() uint {
+	if s.PasswordSecurity == nil {
+		return 0
+	}
+
+	return uint(s.PasswordSecurity.RepeatLimit)
+}
+
+// Patch todo
+func (s *SecuritySetting) Patch(data *SecuritySetting) {
+	b, err := json.Marshal(data)
+	if err != nil {
+		return
+	}
+
+	json.Unmarshal(b, s)
+}
+
+// NewDefaulPasswordSecurity todo
 func NewDefaultPasswordSecurity() *PasswordSecurity {
 	return &PasswordSecurity{
 		Length:                  8,
@@ -28,42 +49,6 @@ func NewDefaultPasswordSecurity() *PasswordSecurity {
 		PasswordExpiredDays:     90,
 		BeforeExpiredRemindDays: 10,
 	}
-}
-
-func NewDefaultLoginSecurity() *LoginSecurity {
-	return &LoginSecurity{
-		ExceptionLock: false,
-		ExceptionLockConfig: &ExceptionLockConfig{
-			OtherPlaceLogin: true,
-			NotLoginDays:    30,
-		},
-		RetryLock: true,
-		RetryLockConfig: &RetryLockConfig{
-			RetryLimite:  5,
-			LockedMinite: 30,
-		},
-		IpLimite: false,
-		IpLimiteConfig: &IPLimiteConfig{
-			Ip: []string{},
-		},
-	}
-}
-
-func (s *SecuritySetting) GetPasswordRepeateLimite() uint {
-	if s.PasswordSecurity == nil {
-		return 0
-	}
-
-	return uint(s.PasswordSecurity.RepeatLimit)
-}
-
-func (s *SecuritySetting) Patch(data *SecuritySetting) {
-	b, err := json.Marshal(data)
-	if err != nil {
-		return
-	}
-
-	json.Unmarshal(b, s)
 }
 
 // Validate 校验对象合法性
@@ -156,6 +141,25 @@ func (p *PasswordSecurity) GenRandomPasswordConfig() password.Config {
 		IncludeNumbers:          true,
 		IncludeLowercaseLetters: true,
 		IncludeUppercaseLetters: true,
+	}
+}
+
+func NewDefaultLoginSecurity() *LoginSecurity {
+	return &LoginSecurity{
+		ExceptionLock: false,
+		ExceptionLockConfig: &ExceptionLockConfig{
+			OtherPlaceLogin: true,
+			NotLoginDays:    30,
+		},
+		RetryLock: true,
+		RetryLockConfig: &RetryLockConfig{
+			RetryLimite:  5,
+			LockedMinite: 30,
+		},
+		IpLimite: false,
+		IpLimiteConfig: &IPLimiteConfig{
+			Ip: []string{},
+		},
 	}
 }
 
