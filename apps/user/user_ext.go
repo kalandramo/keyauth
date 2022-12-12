@@ -195,12 +195,12 @@ func (pf *Profile) ValidateInitialized() error {
 
 // Patch todo
 func (pf *Profile) Patch(data *Profile) {
-	md := NewProfile()
+	// md := NewProfile()
 	patchData, _ := json.Marshal(data)
-	oldData, _ := json.Marshal(pf)
-	json.Unmarshal(oldData, md)
-	json.Unmarshal(patchData, md)
-	*pf = *md
+	// oldData, _ := json.Marshal(pf)
+	// json.Unmarshal(oldData, md)
+	json.Unmarshal(patchData, pf)
+	// *pf = *md
 }
 
 // NewUserSet 实例
