@@ -10,10 +10,8 @@ require (
 	github.com/emicklei/go-restful/v3 v3.10.1
 	github.com/go-openapi/spec v0.20.7
 	github.com/go-playground/validator/v10 v10.11.1
-	github.com/imdario/mergo v0.3.13
 	github.com/infraboard/keyauth v0.8.1
 	github.com/infraboard/mcube v1.9.3
-	github.com/rs/xid v1.4.0
 	github.com/spf13/cobra v1.6.1
 	github.com/stretchr/testify v1.8.1
 	go.mongodb.org/mongo-driver v1.11.0
@@ -48,6 +46,7 @@ require (
 	github.com/mssola/user_agent v0.5.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/rs/xid v1.4.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/ugorji/go/codec v1.2.6 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect

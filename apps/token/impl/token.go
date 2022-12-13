@@ -19,6 +19,11 @@ var (
 )
 
 func (s *service) IssueToken(ctx context.Context, req *token.IssueTokenRequest) (*token.Token, error) {
+	// 连续登录失败检测
+	if err := s.loginBeforeCheck(ctx, req); err != nil {
+		return nil, exception.NewBadRequest("安全检测失败, %s", err)
+	}
+
 	if err := req.Validate(); err != nil {
 		return nil, exception.NewBadRequest("validate issue token error, %s", err)
 	}
@@ -63,5 +68,10 @@ func (s *service) DeleteToken(ctx context.Context, req *token.DeleteTokenRequest
 
 func (s *service) loginBeforeCheck(ctx context.Context, req *token.IssueTokenRequest) error {
 	// 连续登录失败检测
+	if err := s.checker.MaxFailedRetryCheck(ctx, req); err != nil {
+		return exception.NewBadRequest("%s", err)
+	}
+
+	s.log.Debug("security check complete")
 	return nil
 }

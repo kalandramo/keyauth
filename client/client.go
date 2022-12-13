@@ -6,13 +6,9 @@ import (
 	"github.com/infraboard/mcube/logger/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-
-	"github.com/kalandramo/keyauth/apps/book"
 )
 
-var (
-	client *ClientSet
-)
+var client *ClientSet
 
 // SetGlobal todo
 func SetGlobal(cli *ClientSet) {
@@ -48,9 +44,4 @@ func NewClient(conf *kc.Config) (*ClientSet, error) {
 type ClientSet struct {
 	conn *grpc.ClientConn
 	log  logger.Logger
-}
-
-// Book服务的SDK
-func (c *ClientSet) Book() book.ServiceClient {
-	return book.NewServiceClient(c.conn)
 }
